@@ -1,7 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+  /* overflow-x: hidden; */
   font-family: 'Arial', sans-serif;
   background: #111; /* Couleur de fond plus foncée pour un look tech */
 }
@@ -133,7 +140,7 @@ button:hover {
   color: #bbb;
 }
 
-.title {
+.title-language {
   text-align: center;
   margin-bottom: 50px;
   font-size: 2rem;
@@ -228,3 +235,180 @@ button:hover {
   color: #bbb;
 }
 
+.heading {
+  color: #bbb;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.title {
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem 0rem 1rem 0.7rem;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  color: #fff;
+  font-size: 1.3rem;
+  background-color: #333;
+}
+
+.year {
+  background-color: #fff;
+  padding: 0.2rem 0.8rem;
+  border-radius: 10px;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
+}
+
+.icon-timeline{
+  margin-top: 20px;
+}
+
+#timeline p {
+  padding: 1rem 0 1rem 1rem;
+  color: #000;
+}
+
+#timeline button {
+  margin: 0.5rem 0rem 1rem 1rem;
+  outline: none;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background: transparent;
+  transition: all 0.3s ease-in;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+#timeline button:hover {
+  background-color: #bbb;
+  color: #fff;
+}
+
+#timeline ul {
+  padding: 50px 0;
+}
+
+/* create a line */
+#timeline ul li {
+  list-style: none;
+  position: relative;
+  width: 7px;
+  margin: 0 auto;
+  padding-top: 50px;
+  background-color: #bbb;
+}
+
+#timeline ul li .box {
+  position: relative;
+  bottom: 0;
+  width: 450px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  transform: translateX(50%);
+  transition: all 0.5s ease-in-out;
+}
+
+/* right side */
+#timeline ul li:nth-child(odd) .box {
+  left: 50px;
+}
+
+/* left side */
+#timeline ul li:nth-child(even) .box {
+  left: -500px;
+  transform: translateX(-400%);
+}
+
+#timeline ul li .box.show {
+  transform: translateX(0%);
+  transition: all 0.5s ease-in-out;
+}
+
+#timeline ul li i {
+  position: absolute;
+  left: 50%;
+  top: 20;
+  width: 45px;
+  height: 45px;
+  background: #333;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+
+#timeline .fa-brands,
+#timeline .fa-solid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #bbb;
+}
+
+/* arrow */
+#timeline .box:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  width: 0;
+  right: 0;
+  border-style: solid;
+}
+
+#timeline ul li:nth-child(odd) .box:before {
+  left: -15px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent #333;
+}
+
+#timeline ul li:nth-child(even) .box:before {
+  right: -15px;
+  border-width: 8px 0px 8px 16px;
+  border-color: transparent #333;
+}
+
+@media (max-width: 900px) {
+  #timeline ul li .box {
+    width: 350px;
+  }
+
+  #timeline ul li:nth-child(even) .box:beofre {
+    left: -15px;
+    border-width: 8px 16px 8px 0px;
+    border-color: transparent #333;
+  }
+
+  /* right side */
+  #timeline ul li:nth-child(odd) .box {
+    left: 40px;
+  }
+
+  /* left side */
+  #timeline ul li:nth-child(even) .box {
+    left: -390px;
+  }
+}
+
+@media (max-width: 768px) {
+  #timeline ul li {
+    margin-left: 30px;
+  }
+
+  #timeline ul li .box {
+    width: calc(100vw -90px);
+  }
+
+  /* left side conte */
+  #timeline ul li:nth-child(even) .box {
+    left: 40px;
+  }
+
+  #timeline ul li:nth-child(even) .box:before {
+    left: -15px;
+    border-width: 8px 16px 8px 0px;
+    border-color: transparent #333;
+  }
+}
