@@ -214,6 +214,7 @@ button:hover {
 .project-info p {
   font-size: 0.9em;
   color: #bbb;
+  margin-top : 10px;
 }
 
 .project-info a {
@@ -233,6 +234,10 @@ button:hover {
 .room-info p {
   font-size: 0.9em;
   color: #bbb;
+}
+
+.play svg{
+  margin-top: 10px;
 }
 
 .heading {

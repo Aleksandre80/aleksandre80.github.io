@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="project-info">
         <a>${project.name}</a>
         <p>${project.description}</p>
-        ${project.play ? `<a href="${project.url}">${project.play}</a>` : ''}
+        ${project.play ? `<a class="play" href="${project.url}">${project.play}</a>` : ''}
       </div>
     `;
     projectContainer.appendChild(projectDiv);
