@@ -1,0 +1,230 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background: #111; /* Couleur de fond plus foncée pour un look tech */
+}
+
+#particles-js {
+  width: 100%;
+  height: 100vh;
+}
+
+.full-screen-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.social-placement{
+
+}
+
+.social-links {
+  position: absolute;
+}
+
+.social-links:hover {
+  cursor: pointer;
+  animation: zoom 1s;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.content h1 {
+  font-size: 3rem; /* Police plus grande pour le nom */
+  color: #fff; /* Une couleur vive pour mettre en évidence le nom */
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-bottom: 1rem;
+  color: #bbb; /* Couleur plus claire pour le texte */
+}
+
+button {
+  margin: 1rem;
+  padding: 0.7rem 1.5rem;
+  background-color: transparent;
+  border: 1px solid #fff; /* Bordure colorée pour le bouton */
+  color: #fff; /* Texte coloré pour le bouton */
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #0f6; /* Changement de couleur au survol */
+  color: #111;
+}
+
+.social-links img {
+  height: 40px;
+  margin: 0 10px;
+  filter: grayscale(100%) brightness(2); /* Icônes en noir et blanc avec un éclaircissement */
+}
+
+.social-links img:hover {
+  filter: grayscale(0%) brightness(1); /* Les couleurs reviennent au survol */
+}
+
+.languages {
+  background-color: #111;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.languages h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #bbb;
+}
+
+.language-container {
+  display: flex;
+  justify-content: center; /* Utiliser 'center' pour un alignement équilibré */
+  flex-wrap: wrap;
+  gap: 30px; /* Ajouter de l'espace entre les éléments */
+  padding: 0 10px; /* Ajouter un padding pour les bords de la section */
+}
+
+.language-item {
+  width: 150px; /* Ajuster selon la taille souhaitée */
+  padding: 20px;
+  margin-bottom: 20px; /* Ajouter un espace en bas pour le wrap */
+  background: #313131; /* Un fond plus sombre pour chaque élément */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Ajuster l'ombre pour plus de profondeur */
+  transition: transform 0.3s;
+}
+
+.language-item img {
+  max-width: 100%; /* Faire en sorte que les logos utilisent toute la largeur possible */
+  margin-bottom: 10px; /* Ajouter un espace entre l'image et le paragraphe */
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .language-item {
+    width: 100%; /* Les éléments prennent toute la largeur sur les petits écrans */
+    padding: 15px; /* Diminuer le padding sur les petits écrans */
+  }
+}
+
+.language-item:hover {
+  transform: translateY(-5px);
+}
+
+.language-item p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #bbb;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2rem;
+  color: #bbb;
+}
+
+
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.room-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.project {
+  width: 200px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.room {
+  width: 200px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: scale(1.05);
+}
+
+.room:hover {
+  transform: scale(1.05);
+}
+
+.project img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.room img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 15px;
+}
+
+.project-info h3 {
+  margin: 0;
+  color: #bbb;
+}
+
+.project-info p {
+  font-size: 0.9em;
+  color: #bbb;
+}
+
+.project-info a {
+  text-decoration: underline;
+  color: #bbb;
+}
+
+.room-info {
+  padding: 15px;
+}
+
+.room-info h3 {
+  margin: 0;
+  color: #bbb;
+}
+
+.room-info p {
+  font-size: 0.9em;
+  color: #bbb;
+}
+
