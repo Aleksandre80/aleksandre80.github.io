@@ -234,6 +234,7 @@ button:hover {
 .room-info p {
   font-size: 0.9em;
   color: #bbb;
+  margin-top : 10px;
 }
 
 .play svg{
@@ -244,7 +245,7 @@ button:hover {
   color: #bbb;
   padding: 1rem 0;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .title {
@@ -253,7 +254,7 @@ button:hover {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 2rem;
   background-color: #333;
 }
 
