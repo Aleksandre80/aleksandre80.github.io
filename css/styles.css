@@ -194,7 +194,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-.room:hover {
+.card:hover {
   transform: scale(1.05);
 }
 
@@ -451,6 +451,7 @@ button:hover {
 .card {
   border-radius: 0.5em;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
 }
 .card > img {
   border-top-right-radius: inherit;
