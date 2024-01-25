@@ -452,19 +452,22 @@ button:hover {
   border-radius: 0.5em;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
+  width: 300px; /* largeur fixe */
+  height: 400px; /* hauteur fixe */
+  overflow: hidden; /* cache le contenu débordant */
+  display: flex;
+  flex-direction: column;
+  background: #333;
 }
-.card > img {
-  border-top-right-radius: inherit;
-  border-top-left-radius: inherit;
-  display: block;
-  width: 17.5em;
+.card img {
+  width: 100%; /* assure que l'image couvre toute la largeur de la carte */
+  height: 250px; /* hauteur fixe pour les images */
+  object-fit: cover; /* assure que l'image couvre la zone sans être déformée */
 }
-.card > .content {
-  background: #444;
-  border-bottom-left-radius: inherit;
-  border-bottom-right-radius: inherit;
-  padding: 1em;
-  text-align: center;
+
+.card .content {
+  padding: 10px;
+  flex-grow: 1; /* permet au contenu de remplir l'espace restant */
 }
 .card > .content > h1, .card > .content > h3 {
   margin: 0.35em 0;
