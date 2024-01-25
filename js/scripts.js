@@ -83,17 +83,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   rooms.forEach(room => {
-    const roomDiv = document.createElement('div');
-    roomDiv.classList.add('room');
-    roomDiv.innerHTML = `
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+  
+    cardDiv.innerHTML = `
       <img src="${room.image}" alt="${room.name}">
-      <div class="room-info">
-        <h3>${room.name}</h3>
-        <p>${room.description}</p>
+      <div class="content">
+        <h1>${room.name}</h1>
+        <h3>${room.description}</h3>
       </div>
     `;
-    roomContainer.appendChild(roomDiv);
+  
+    document.querySelector('.inner').appendChild(cardDiv);
   });
+  
 
 
 });
