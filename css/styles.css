@@ -27,16 +27,15 @@ body, html {
 }
 
 .social-placement{
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
-}
-
-.social-links {
-  position: absolute;
 }
 
 .social-links:hover {
   cursor: pointer;
-  animation: zoom 1s;
+  animation: zoom 1s infinite alternate;
 }
 
 @keyframes zoom {
