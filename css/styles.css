@@ -72,8 +72,9 @@ button {
 }
 
 button:hover {
-  background-color: #0f6; /* Changement de couleur au survol */
-  color: #111;
+  background-color: #fff; /* Fond blanc au survol */
+  color: #111; /* Texte noir au survol */
+  cursor: pointer;
 }
 
 .social-links img {
