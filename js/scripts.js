@@ -59,6 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
       name: 'Intro to Offensive Security',
       description: 'Hack your first website (legally in a safe environment) and experience an ethical hacker\'s job.',
       image: 'https://tryhackme-images.s3.amazonaws.com/room-icons/f9dbbfc2dadce39c2ce9a592a0389d38.png'
+    },
+    {
+      id: 9,
+      name: 'OWASP Juice Shop',
+      description: 'This room uses the Juice Shop vulnerable web application to learn how to identify and exploit common web application vulnerabilities.',
+      image: '	https://tryhackme-images.s3.amazonaws.com/room-icons/9a0c0a661ba218c0f9d533c8f41d8dd5.png'
     }
   ]
 
