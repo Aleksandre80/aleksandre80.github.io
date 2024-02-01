@@ -440,7 +440,7 @@ button:hover {
   display: flex;
   grid-gap: 1em;
   overflow: hidden;
-  width: 55em;
+  width: 59em;
 }
 .wrapper > .inner {
   display: flex;
