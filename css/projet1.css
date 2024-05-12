@@ -26,26 +26,33 @@ body, html {
     display: flex;
     align-items: center;
     margin-top: 50px;
+    width: 100%;
   }
   
   .project-content:nth-child(even) {
-    flex-direction: row-reverse; /* Alternates the image and text for each section */
+    flex-direction: row-reverse;
+  }
+  
+  .project-image {
+    flex-shrink: 0.7;
+  }
+  
+  .project-description {
+    flex-shrink: 1;
+    padding: 20px;
+    text-align: justify;
   }
   
   .project-image img {
     width: 100%;
-    max-width: 1800px; /* Adjust the image size */
+    max-width: 1800px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   
-  .project-description {
-    flex-grow: 1;
-    padding-left: 20px;
-  }
-  
   .project-description h2 {
     color: #bbb;
+    text-align: left;
   }
   
   .project-description p {
