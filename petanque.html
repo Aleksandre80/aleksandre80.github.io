@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Pétanque Mêlée</title>
+    <link rel="stylesheet" href="js/petanque.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Application Pétanque Mêlée</h1>
+        <div>
+            <label for="numPlayers">Nombre de joueurs:</label>
+            <input type="number" id="numPlayers" min="0" value="26">
+        </div>
+        <div>
+            <label for="priority">Prioriser :</label>
+            <select id="priority">
+                <option value="doublette">Doublette</option>
+                <option value="triplette">Triplette</option>
+            </select>
+        </div>
+        <button onclick="handleTournament()">Générer les équipes</button>
+        <div id="results"></div>
+    </div>
+    <script src="js/petanque.js"></script>
+</body>
+</html>
