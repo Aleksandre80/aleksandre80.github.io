@@ -3,10 +3,10 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('/img/bg.jpg');
+    background-image: url('/img/loir-et-cher.webp');
     background-position: center;
     background-repeat: no-repeat;
-    /* background-size: cover; */
+    background-size: cover;
 }
 
 .container {
