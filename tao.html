@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculateur de Croissance Tao</title>
+    <link rel="stylesheet" href="tao.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Calculateur de Croissance des Tokens Tao</h2>
+        <label for="annualRate">Taux de croissance annuel (%):</label>
+        <input type="number" id="annualRate" required>
+
+        <label for="initialTokens">Nombre initial de tokens Tao:</label>
+        <input type="number" id="initialTokens" required>
+
+        <label for="days">Nombre de jours:</label>
+        <input type="number" id="days" required>
+
+        <button onclick="calculateGrowth()">Calculer</button>
+
+        <div id="result"></div>
+    </div>
+    <script src="tao.js"></script>
+</body>
+</html>
