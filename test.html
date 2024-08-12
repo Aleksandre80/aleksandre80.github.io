@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADN Animation avec Three.js</title>
+    <!-- Import Three.js et GLTFLoader -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+
+<body>
+    <script>
+        // Configuration de base de la scène, caméra et rendu
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Ajouter de la lumière à la scène
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(5, 10, 7.5);
+        scene.add(directionalLight);
+
+        // Positionner la caméra
+        camera.position.set(0, 5, -5);
+        camera.lookAt(0, 0, 0);
+
+        // Créer un groupe pour contenir le modèle
+        const modelGroup = new THREE.Group();
+        scene.add(modelGroup);
+
+        // Chargement du modèle 3D
+        const loader = new THREE.GLTFLoader();
+        loader.load('img/dna.glb', function (gltf) {
+            const model = gltf.scene;
+
+            // Centrer le modèle
+            model.position.set(0, 0, 0);
+            modelGroup.add(model);
+
+            // Si votre modèle a des animations exportées
+            const mixer = new THREE.AnimationMixer(model);
+            gltf.animations.forEach((clip) => {
+                const action = mixer.clipAction(clip);
+                action.play();
+            });
+
+            // Animation loop
+            const clock = new THREE.Clock();
+            function animate() {
+                requestAnimationFrame(animate);
+                mixer.update(clock.getDelta());
+                modelGroup.rotation.y += 0.01; // Rotation du groupe entier
+                renderer.render(scene, camera);
+            }
+            animate();
+
+        }, undefined, function (error) {
+            console.error('An error happened while loading the model:', error);
+        });
+
+        // Redimensionner la fenêtre
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

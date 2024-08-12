@@ -218,6 +218,21 @@ code {
     transition: background-color 0.3s;
 }
 
+.animation-container {
+    width: 150px; /* Largeur du conteneur d'animation */
+    height: 150px; /* Hauteur du conteneur d'animation */
+    margin-top: 10px; /* Espacement entre la date et l'animation */
+    margin-left: 10px; /* Espacement à gauche pour aligner avec la date */
+}
+
+.animation-container-2 {
+    width: 150px; /* Largeur du conteneur d'animation */
+    height: 150px; /* Hauteur du conteneur d'animation */
+    margin-top: 10px; /* Espacement entre la date et l'animation */
+    margin-left: 10px; /* Espacement à gauche pour aligner avec la date */
+}
+
+
 .job::before {
     content: "";
     position: absolute;
@@ -298,6 +313,13 @@ code {
 .tech-badge:hover {
     background-color: #64ffda;
     color: #112240;
+}
+
+#dna-animation canvas {
+    width: 1px;  /* Ajustez la taille selon vos besoins */
+    height: 1px;
+    display: block;
+    margin: 0 auto;
 }
 
 .see-all-projects {
@@ -546,6 +568,7 @@ td .projectName {
     --tw-text-opacity: 1;
     font-weight: bold;
 }
+
 
 @media (max-width: 1024px) {
     table,

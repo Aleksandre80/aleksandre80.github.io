@@ -9,11 +9,11 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2RRJY930K"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-N2RRJY930K');
+        gtag('config', 'G-N2RRJY930K');
     </script>
 </head>
 
@@ -45,12 +45,14 @@
                             name='linkedin-square'></box-icon>
                     </a>
                     <a href="https://aleksandre80.gitbook.io/untitled" target="_blank">
-                        <svg width="36px" height="36px" class="icon" style="fill:#8892b0;" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.802 17.77a.703.703 0 1 1-.002 1.406.703.703 0 0 1 .002-1.406m11.024-4.347a.703.703 0 1 1 .001-1.406.703.703 0 0 1-.001 1.406m0-2.876a2.176 2.176 0 0 0-2.174 2.174c0 .233.039.465.115.691l-7.181 3.823a2.165 2.165 0 0 0-1.784-.937c-.829 0-1.584.475-1.95 1.216l-6.451-3.402c-.682-.358-1.192-1.48-1.138-2.502.028-.533.212-.947.493-1.107.178-.1.392-.092.62.027l.042.023c1.71.9 7.304 3.847 7.54 3.956.363.169.565.237 1.185-.057l11.564-6.014c.17-.064.368-.227.368-.474 0-.342-.354-.477-.355-.477-.658-.315-1.669-.788-2.655-1.25-2.108-.987-4.497-2.105-5.546-2.655-.906-.474-1.635-.074-1.765.006l-.252.125C7.78 6.048 1.46 9.178 1.1 9.397.457 9.789.058 10.57.006 11.539c-.08 1.537.703 3.14 1.824 3.727l6.822 3.518a2.175 2.175 0 0 0 2.15 1.862 2.177 2.177 0 0 0 2.173-2.14l7.514-4.073c.38.298.853.461 1.337.461A2.176 2.176 0 0 0 24 12.72a2.176 2.176 0 0 0-2.174-2.174"/>
+                        <svg width="36px" height="36px" class="icon" style="fill:#8892b0;" viewBox="0 0 24 24"
+                            role="img" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.802 17.77a.703.703 0 1 1-.002 1.406.703.703 0 0 1 .002-1.406m11.024-4.347a.703.703 0 1 1 .001-1.406.703.703 0 0 1-.001 1.406m0-2.876a2.176 2.176 0 0 0-2.174 2.174c0 .233.039.465.115.691l-7.181 3.823a2.165 2.165 0 0 0-1.784-.937c-.829 0-1.584.475-1.95 1.216l-6.451-3.402c-.682-.358-1.192-1.48-1.138-2.502.028-.533.212-.947.493-1.107.178-.1.392-.092.62.027l.042.023c1.71.9 7.304 3.847 7.54 3.956.363.169.565.237 1.185-.057l11.564-6.014c.17-.064.368-.227.368-.474 0-.342-.354-.477-.355-.477-.658-.315-1.669-.788-2.655-1.25-2.108-.987-4.497-2.105-5.546-2.655-.906-.474-1.635-.074-1.765.006l-.252.125C7.78 6.048 1.46 9.178 1.1 9.397.457 9.789.058 10.57.006 11.539c-.08 1.537.703 3.14 1.824 3.727l6.822 3.518a2.175 2.175 0 0 0 2.15 1.862 2.177 2.177 0 0 0 2.173-2.14l7.514-4.073c.38.298.853.461 1.337.461A2.176 2.176 0 0 0 24 12.72a2.176 2.176 0 0 0-2.174-2.174" />
                         </svg>
                     </a>
-                    
-                    
+
+
 
 
                 </ul>
@@ -103,7 +105,12 @@
             <div id="experience" class="experience">
                 <div class="job">
                     <div class="job-header">
-                        <p class="job-date">07/2024 — PRESENT</p>
+                        <div>
+                            <p class="job-date">07/2024 — PRESENT</p>
+                            <div class="animation-container"> <!-- Conteneur pour l'animation 3D -->
+                                <!-- L'animation 3D sera rendue ici -->
+                            </div>
+                        </div>
                         <div class="job-details">
                             <h3>Fullstack, Linux, BioInformatique · CHU Amiens</h3>
                             <p>Développement d'un site permettant d'éxécuter des pipelines sur un automate de séquençage
@@ -169,7 +176,10 @@
                 </div>
                 <div class="job">
                     <div class="job-header">
-                        <p class="job-date">11/2023 — 01/2024</p>
+                        <div>
+                            <p class="job-date">11/2023 — 01/2024</p>
+                            <div class="animation-container-2"></div>
+                        </div>
                         <div class="job-details">
                             <h3>Fullstack, DevOps, Minecraft · Association</h3>
                             <p>Le client est un serveur Minecraft et la demande est un site qui est connecté au serveur
@@ -291,6 +301,137 @@
     </script>
     <script src="tryhackme.js"></script>
     <script src="social.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+        // --- Première Scène ---
+        const container1 = document.querySelector('.animation-container');
+        const scene1 = new THREE.Scene();
+        const camera1 = new THREE.PerspectiveCamera(75, container1.clientWidth / container1.clientHeight, 0.1, 1000);
+        const renderer1 = new THREE.WebGLRenderer({ alpha: true });
+        renderer1.setSize(container1.clientWidth, container1.clientHeight);
+        container1.appendChild(renderer1.domElement);
+
+        const ambientLight1 = new THREE.AmbientLight(0xffffff, 0.6);
+        scene1.add(ambientLight1);
+        const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight1.position.set(5, 10, 7.5);
+        scene1.add(directionalLight1);
+
+        camera1.position.set(0, 5, 25);
+        camera1.lookAt(0, 0, 0);
+
+        const modelGroup1 = new THREE.Group();
+        scene1.add(modelGroup1);
+
+        const loader1 = new THREE.GLTFLoader();
+        loader1.load('img/dna.glb', function (gltf) {
+            const model = gltf.scene;
+
+            const material1 = new THREE.MeshStandardMaterial({
+                color: 0xdaf0fa,
+                metalness: 0.2,
+                roughness: 0.5
+            });
+
+            model.traverse(function (child) {
+                if (child.isMesh) {
+                    child.material = material1;
+                }
+            });
+
+            model.position.set(0, -20, -5);
+            modelGroup1.add(model);
+
+            const mixer1 = new THREE.AnimationMixer(model);
+            gltf.animations.forEach((clip) => {
+                const action = mixer1.clipAction(clip);
+                action.play();
+            });
+
+            const clock1 = new THREE.Clock();
+            function animate1() {
+                requestAnimationFrame(animate1);
+                mixer1.update(clock1.getDelta());
+                modelGroup1.rotation.y += 0.01;
+                renderer1.render(scene1, camera1);
+            }
+            animate1();
+        });
+
+        window.addEventListener('resize', () => {
+            const width1 = container1.clientWidth;
+            const height1 = container1.clientHeight;
+            renderer1.setSize(width1, height1);
+            camera1.aspect = width1 / height1;
+            camera1.updateProjectionMatrix();
+        });
+
+        // --- Deuxième Scène ---
+        const container2 = document.querySelector('.animation-container-2');
+        const scene2 = new THREE.Scene();
+        const camera2 = new THREE.PerspectiveCamera(75, container2.clientWidth / container2.clientHeight, 0.1, 1000);
+        const renderer2 = new THREE.WebGLRenderer({ alpha: true });
+        renderer2.setSize(container2.clientWidth, container2.clientHeight);
+        container2.appendChild(renderer2.domElement);
+
+        const ambientLight2 = new THREE.AmbientLight(0xffffff, 0.6);
+        scene2.add(ambientLight2);
+        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight2.position.set(5, 10, 7.5);
+        scene2.add(directionalLight2);
+
+        camera2.position.set(0, 3, 3);
+        camera2.lookAt(0, 0, 0);
+
+        const modelGroup2 = new THREE.Group();
+        scene2.add(modelGroup2);
+
+        const loader2 = new THREE.GLTFLoader();
+        loader2.load('img/minecraft_grass_block.glb', function (gltf) {
+            const model = gltf.scene;
+
+            // const material2 = new THREE.MeshStandardMaterial({
+            //     color: 0xffa500, // Orange color for the second model
+            //     metalness: 0.7,
+            //     roughness: 0.2
+            // });
+
+            // model.traverse(function (child) {
+            //     if (child.isMesh) {
+            //         child.material = material2;
+            //     }
+            // });
+
+            model.position.set(0, 0, 0);
+            modelGroup2.add(model);
+
+            const mixer2 = new THREE.AnimationMixer(model);
+            gltf.animations.forEach((clip) => {
+                const action = mixer2.clipAction(clip);
+                action.play();
+            });
+
+            const clock2 = new THREE.Clock();
+            function animate2() {
+                requestAnimationFrame(animate2);
+                mixer2.update(clock2.getDelta());
+                modelGroup2.rotation.y += 0.01;
+                renderer2.render(scene2, camera2);
+            }
+            animate2();
+        });
+
+        window.addEventListener('resize', () => {
+            const width2 = container2.clientWidth;
+            const height2 = container2.clientHeight;
+            renderer2.setSize(width2, height2);
+            camera2.aspect = width2 / height2;
+            camera2.updateProjectionMatrix();
+        });
+    </script>
+    
+
 
 
 
