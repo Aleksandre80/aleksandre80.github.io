@@ -219,19 +219,11 @@ code {
 }
 
 .animation-container {
-    width: 150px; /* Largeur du conteneur d'animation */
-    height: 150px; /* Hauteur du conteneur d'animation */
-    margin-top: 10px; /* Espacement entre la date et l'animation */
-    margin-left: 10px; /* Espacement à gauche pour aligner avec la date */
+    width: 65px;
+    height: 65px;
+    margin-left: 40px;
+    rotate: 90deg;
 }
-
-.animation-container-2 {
-    width: 150px; /* Largeur du conteneur d'animation */
-    height: 150px; /* Hauteur du conteneur d'animation */
-    margin-top: 10px; /* Espacement entre la date et l'animation */
-    margin-left: 10px; /* Espacement à gauche pour aligner avec la date */
-}
-
 
 .job::before {
     content: "";
@@ -297,6 +289,11 @@ code {
     gap: 0.5rem;
     margin-top: 1rem;
     margin-left: calc(150px + 2rem); /* Align with the content */
+    height: 10px;
+}
+
+.animation-techno-container {
+    display: flex;
 }
 
 .tech-badge {

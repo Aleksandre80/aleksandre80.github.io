@@ -107,9 +107,7 @@
                     <div class="job-header">
                         <div>
                             <p class="job-date">07/2024 — PRESENT</p>
-                            <div class="animation-container"> <!-- Conteneur pour l'animation 3D -->
-                                <!-- L'animation 3D sera rendue ici -->
-                            </div>
+
                         </div>
                         <div class="job-details">
                             <h3>Fullstack, Linux, BioInformatique · CHU Amiens</h3>
@@ -118,12 +116,17 @@
                                 maison pour des demandes spécifiques des techniciens et médecins</p>
                         </div>
                     </div>
-                    <div class="technologies">
-                        <span class="tech-badge">HTML</span>
-                        <span class="tech-badge">CSS</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Bash</span>
+                    <div class="animation-techno-container">
+                        <div class="technologies">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Bash</span>
+                        </div>
+                        <div class="animation-container"> <!-- Conteneur pour l'animation 3D -->
+                            <!-- L'animation 3D sera rendue ici -->
+                        </div>
                     </div>
                 </div>
                 <div class="job">
@@ -305,132 +308,140 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
         // --- Première Scène ---
-        const container1 = document.querySelector('.animation-container');
-        const scene1 = new THREE.Scene();
-        const camera1 = new THREE.PerspectiveCamera(75, container1.clientWidth / container1.clientHeight, 0.1, 1000);
-        const renderer1 = new THREE.WebGLRenderer({ alpha: true });
-        renderer1.setSize(container1.clientWidth, container1.clientHeight);
-        container1.appendChild(renderer1.domElement);
+        // const container1 = document.querySelector('.animation-container');
+        // const scene1 = new THREE.Scene();
+        // const camera1 = new THREE.PerspectiveCamera(75, container1.clientWidth / container1.clientHeight, 0.1, 1000);
+        // const renderer1 = new THREE.WebGLRenderer({ alpha: true });
+        // renderer1.setSize(container1.clientWidth, container1.clientHeight);
+        // container1.appendChild(renderer1.domElement);
 
-        const ambientLight1 = new THREE.AmbientLight(0xffffff, 0.6);
-        scene1.add(ambientLight1);
-        const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight1.position.set(5, 10, 7.5);
-        scene1.add(directionalLight1);
+        // const ambientLight1 = new THREE.AmbientLight(0xffffff, 0.6);
+        // scene1.add(ambientLight1);
+        // const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+        // directionalLight1.position.set(5, 10, 7.5);
+        // scene1.add(directionalLight1);
 
-        camera1.position.set(0, 5, 25);
-        camera1.lookAt(0, 0, 0);
+        // camera1.position.set(0, 5, 25);
+        // camera1.lookAt(0, 0, 0);
 
-        const modelGroup1 = new THREE.Group();
-        scene1.add(modelGroup1);
+        // const modelGroup1 = new THREE.Group();
+        // scene1.add(modelGroup1);
 
-        const loader1 = new THREE.GLTFLoader();
-        loader1.load('img/dna.glb', function (gltf) {
-            const model = gltf.scene;
+        // const loader1 = new THREE.GLTFLoader();
+        // loader1.load('img/dna.glb', function (gltf) {
+        //     const model = gltf.scene;
 
-            const material1 = new THREE.MeshStandardMaterial({
-                color: 0xdaf0fa,
-                metalness: 0.2,
-                roughness: 0.5
-            });
+        //     // Calculer les dimensions du modèle
+        //     const boundingBox = new THREE.Box3().setFromObject(model);
+        //     const size = boundingBox.getSize(new THREE.Vector3());
+        //     const aspectRatio = size.x / size.y;
 
-            model.traverse(function (child) {
-                if (child.isMesh) {
-                    child.material = material1;
-                }
-            });
+        //     const material1 = new THREE.MeshStandardMaterial({
+        //         color: 0xdaf0fa,
+        //         metalness: 0.2,
+        //         roughness: 0.5
+        //     });
 
-            model.position.set(0, -20, -5);
-            modelGroup1.add(model);
+        //     model.traverse(function (child) {
+        //         if (child.isMesh) {
+        //             child.material = material1;
+        //         }
+        //     });
 
-            const mixer1 = new THREE.AnimationMixer(model);
-            gltf.animations.forEach((clip) => {
-                const action = mixer1.clipAction(clip);
-                action.play();
-            });
+        //     model.position.set(0, -20, -5);
+        //     model.scale.set(1, 1, 1);
+        //     modelGroup1.add(model);
 
-            const clock1 = new THREE.Clock();
-            function animate1() {
-                requestAnimationFrame(animate1);
-                mixer1.update(clock1.getDelta());
-                modelGroup1.rotation.y += 0.01;
-                renderer1.render(scene1, camera1);
-            }
-            animate1();
-        });
+        //     const mixer1 = new THREE.AnimationMixer(model);
+        //     gltf.animations.forEach((clip) => {
+        //         const action = mixer1.clipAction(clip);
+        //         action.play();  // Animation désactivée pour l'instant
+        //     });
 
-        window.addEventListener('resize', () => {
-            const width1 = container1.clientWidth;
-            const height1 = container1.clientHeight;
-            renderer1.setSize(width1, height1);
-            camera1.aspect = width1 / height1;
-            camera1.updateProjectionMatrix();
-        });
+        //     const clock1 = new THREE.Clock();
+        //     function animate1() {
+        //         requestAnimationFrame(animate1);
+        //         mixer1.update(clock1.getDelta());
+        //         modelGroup1.rotation.y += 0.01;  // Rotation désactivée pour l'instant
+        //         renderer1.render(scene1, camera1);
+        //     }
+        //     animate1();
+
+        //     // Ajuster le canvas en fonction du rapport d'aspect du modèle
+        //     window.addEventListener('resize', () => {
+        //         const width = container1.clientWidth;
+        //         const height = width / aspectRatio;
+        //         renderer1.setSize(width, height);
+        //         camera1.aspect = width / height;
+        //         camera1.updateProjectionMatrix();
+        //     });
+        // });
+
 
         // --- Deuxième Scène ---
-        const container2 = document.querySelector('.animation-container-2');
-        const scene2 = new THREE.Scene();
-        const camera2 = new THREE.PerspectiveCamera(75, container2.clientWidth / container2.clientHeight, 0.1, 1000);
-        const renderer2 = new THREE.WebGLRenderer({ alpha: true });
-        renderer2.setSize(container2.clientWidth, container2.clientHeight);
-        container2.appendChild(renderer2.domElement);
+        // const container2 = document.querySelector('.animation-container-2');
+        // const scene2 = new THREE.Scene();
+        // const camera2 = new THREE.PerspectiveCamera(75, container2.clientWidth / container2.clientHeight, 0.1, 1000);
+        // const renderer2 = new THREE.WebGLRenderer({ alpha: true });
+        // renderer2.setSize(container2.clientWidth, container2.clientHeight);
+        // container2.appendChild(renderer2.domElement);
 
-        const ambientLight2 = new THREE.AmbientLight(0xffffff, 0.6);
-        scene2.add(ambientLight2);
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight2.position.set(5, 10, 7.5);
-        scene2.add(directionalLight2);
+        // const ambientLight2 = new THREE.AmbientLight(0xffffff, 0.6);
+        // scene2.add(ambientLight2);
+        // const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
+        // directionalLight2.position.set(5, 10, 7.5);
+        // scene2.add(directionalLight2);
 
-        camera2.position.set(0, 3, 3);
-        camera2.lookAt(0, 0, 0);
+        // camera2.position.set(0, 3, 3);
+        // camera2.lookAt(0, 0, 0);
 
-        const modelGroup2 = new THREE.Group();
-        scene2.add(modelGroup2);
+        // const modelGroup2 = new THREE.Group();
+        // scene2.add(modelGroup2);
 
-        const loader2 = new THREE.GLTFLoader();
-        loader2.load('img/minecraft_grass_block.glb', function (gltf) {
-            const model = gltf.scene;
+        // const loader2 = new THREE.GLTFLoader();
+        // loader2.load('img/minecraft_grass_block.glb', function (gltf) {
+        //     const model = gltf.scene;
 
-            // const material2 = new THREE.MeshStandardMaterial({
-            //     color: 0xffa500, // Orange color for the second model
-            //     metalness: 0.7,
-            //     roughness: 0.2
-            // });
+        //     // const material2 = new THREE.MeshStandardMaterial({
+        //     //     color: 0xffa500, // Orange color for the second model
+        //     //     metalness: 0.7,
+        //     //     roughness: 0.2
+        //     // });
 
-            // model.traverse(function (child) {
-            //     if (child.isMesh) {
-            //         child.material = material2;
-            //     }
-            // });
+        //     // model.traverse(function (child) {
+        //     //     if (child.isMesh) {
+        //     //         child.material = material2;
+        //     //     }
+        //     // });
 
-            model.position.set(0, 0, 0);
-            modelGroup2.add(model);
+        //     model.position.set(0, 0, 0);
+        //     modelGroup2.add(model);
 
-            const mixer2 = new THREE.AnimationMixer(model);
-            gltf.animations.forEach((clip) => {
-                const action = mixer2.clipAction(clip);
-                action.play();
-            });
+        //     const mixer2 = new THREE.AnimationMixer(model);
+        //     gltf.animations.forEach((clip) => {
+        //         const action = mixer2.clipAction(clip);
+        //         action.play();
+        //     });
 
-            const clock2 = new THREE.Clock();
-            function animate2() {
-                requestAnimationFrame(animate2);
-                mixer2.update(clock2.getDelta());
-                modelGroup2.rotation.y += 0.01;
-                renderer2.render(scene2, camera2);
-            }
-            animate2();
-        });
+        //     const clock2 = new THREE.Clock();
+        //     function animate2() {
+        //         requestAnimationFrame(animate2);
+        //         mixer2.update(clock2.getDelta());
+        //         modelGroup2.rotation.y += 0.01;
+        //         renderer2.render(scene2, camera2);
+        //     }
+        //     animate2();
+        // });
 
-        window.addEventListener('resize', () => {
-            const width2 = container2.clientWidth;
-            const height2 = container2.clientHeight;
-            renderer2.setSize(width2, height2);
-            camera2.aspect = width2 / height2;
-            camera2.updateProjectionMatrix();
-        });
+        // window.addEventListener('resize', () => {
+        //     const width2 = container2.clientWidth;
+        //     const height2 = container2.clientHeight;
+        //     renderer2.setSize(width2, height2);
+        //     camera2.aspect = width2 / height2;
+        //     camera2.updateProjectionMatrix();
+        // });
     </script>
-    
+
 
 
 
