@@ -59,6 +59,15 @@ body:hover .cursor-light {
     border-right: 1px solid #233554;
 }
 
+.sidebar-stage {
+    flex: 1.8;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    padding-right: 2rem;
+    border-right: 1px solid #233554;
+}
+
 .header {
     text-align: left;
 }
