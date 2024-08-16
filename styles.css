@@ -822,6 +822,7 @@ td .projectName {
     }
 
     .card {
+        margin-top: 10px;
         flex-direction: row; /* Aligner horizontalement l'image et le texte */
         align-items: center; /* Centrer verticalement */
         padding: 1rem;
@@ -975,6 +976,7 @@ td .projectName {
     .card-content p {
         font-size: 0.75rem; /* Réduire la taille du texte */
     }
+
 }
 
 
