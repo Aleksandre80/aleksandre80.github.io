@@ -64,6 +64,18 @@ const rooms = [
         name: 'Intro to Containerisation',
         description: 'Learn about the technologies and benefits of containerisation.',
         image: 'https://tryhackme-images.s3.amazonaws.com/room-icons/54c8b0434d00d19e6e5c301f4c7bad5f.png'
+    },
+    {
+        id: 12,
+        name: 'Fowsniff CTF',
+        description: 'Hack this machine and get the flag. There are lots of hints along the way and is perfect for beginners!',
+        image: 'https://tryhackme-images.s3.amazonaws.com/room-icons/97b218eed9688e9a5cbe136714b86288.jpeg'
+    },
+    {
+        id: 13,
+        name: 'SQL Injection Lab',
+        description: 'Understand how SQL injection attacks work and how to exploit this vulnerability.',
+        image: 'https://tryhackme-images.s3.amazonaws.com/room-icons/3ffa0349ab3326d3aeda7b190a6b5994.png'
     }
     
 
