@@ -224,34 +224,29 @@ code {
     position: relative;
     padding: 1.5rem 0;
     margin-bottom: 2rem;
-    transition: background-color 0.3s;
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Transition pour l'effet */
 }
 
-.animation-container {
-    width: 65px;
-    height: 65px;
-    margin-left: 40px;
-    rotate: 90deg;
+.job:hover {
+    background: #64ffdb11; /* Change la transparence au hover */
+    backdrop-filter: blur(10px); /* Applique un flou pour l'effet de verre */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre pour donner de la profondeur */
+    z-index: 10; /* Positionne l'élément au-dessus des autres */
 }
 
-.job::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -10px; /* Adjust this value to control how much it exceeds on the left */
-    right: -10px; /* Adjust this value to control how much it exceeds on the right */
-    bottom: 0;
-    background-color: rgba(100, 255, 219, 0.13);
-    border-radius: 5px;
-    z-index: -1;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s;
+.job-container:hover .job:not(:hover) {
+    filter: blur(2px); /* Applique un flou léger à tous les autres éléments */
+    transform: scale(0.95); /* Réduit légèrement les autres éléments */
+    transition: all 0.3s ease;
 }
 
-.job:hover::before {
-    transform: scaleX(1);
+.job:hover .job-details h3 {
+    color: #64ffda;
+    transition: color 0.3s ease; /* Transition pour la couleur */
 }
+
 
 .job-header {
     display: flex;
@@ -290,6 +285,13 @@ code {
 .job-details {
     margin-left: 2rem;
     flex-grow: 1;
+}
+
+.animation-container {
+    width: 65px;
+    height: 65px;
+    margin-left: 40px;
+    rotate: 90deg;
 }
 
 .technologies {
@@ -458,6 +460,9 @@ code {
     border-radius: 8px;
     transition: background-color 0.3s;
     margin-bottom: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+
 }
 
 .card:hover {
