@@ -425,14 +425,23 @@ code {
 }
 
 
-.ctf-section {
+.ctf-section,
+.cv-section {
     margin-top: 2rem;
 }
 
-.ctf-section h3 {
+.ctf-section h3,
+.cv-section h3 {
     color: #ccd6f6;
     font-size: 1.25rem;
     margin-bottom: 1rem;
+}
+
+.cv-section a {
+    color: #64ffda;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .ctf-section ul {
