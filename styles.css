@@ -5,8 +5,10 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    min-height: 200vh;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .cursor-light {
@@ -49,6 +51,23 @@ body:hover .cursor-light {
     max-width: 1200px;
     padding: 2rem;
 }
+
+.iframe-container {
+    position: absolute; /* Retire l'iframe du flux normal */
+    bottom: -1000px; /* Le place tout en bas de la page */
+    left: 0;
+    width: 100%;
+    height: 800px;
+    background-color: #0a192f; /* Facultatif, pour correspondre à l'esthétique */
+    z-index: 1000; /* Pour s'assurer qu'il est au-dessus du contenu si nécessaire */
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 
 .sidebar {
     flex: 1;
