@@ -57,7 +57,7 @@ body:hover .cursor-light {
     bottom: -1000px; /* Le place tout en bas de la page */
     left: 0;
     width: 100%;
-    height: 800px;
+    height: 950px;
     background-color: #0a192f; /* Facultatif, pour correspondre à l'esthétique */
     z-index: 1000; /* Pour s'assurer qu'il est au-dessus du contenu si nécessaire */
 }
