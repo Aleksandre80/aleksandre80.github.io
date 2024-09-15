@@ -33,28 +33,48 @@
                             OPTIMISATION PIPELINES</a></li>
                     <li><a href="#methylation" class="nav-link"><span class="nav-line"></span> METHYLATION</a></li>
                     <li><a href="#app" class="nav-link"><span class="nav-line"></span> APPLI WEB</a></li>
-                    <li><a href="https://aleksandre80.gitbook.io/untitled"  target="_blank" class="nav-link"><span class="nav-line"></span> GITBOOK</a></li>
-                    <li><a href="https://github.com/Aleksandre80/GenomePilot" target="_blank" class="nav-link"><span class="nav-line"></span> GITHUB</a></li>
+                    <li><a href="https://aleksandre80.gitbook.io/untitled" target="_blank" class="nav-link"><span
+                                class="nav-line"></span> GITBOOK</a></li>
+                    <li><a href="https://github.com/Aleksandre80/GenomePilot" target="_blank" class="nav-link"><span
+                                class="nav-line"></span> GITHUB</a></li>
                     <li><a href="#bilan" class="nav-link"><span class="nav-line"></span> BILAN</a></li>
                 </ul>
             </div>
             <br>
             <br>
             <div>
-                <img src="img/gridion.jpg" width="100%" alt="">
-                <img src="img/model_start.png" width="100%" alt="">
-                <img src="img/RB11-Q17.png" width="100%" alt="">
-                <img src="img/methylation.png" width="100%" alt="">
-                <img src="img/methylationAlamut.jpg" width="100%" alt="">
-                <img src="img/automate.jpg" width="100%" alt="">
-                <img src="img/GenomePilot.png" width="100%" alt="">
-
+                <img src="img/gridion.jpg" width="100%" alt="Machine de séquençage de l'ADN vendue par Nanopore"
+                    class="clickable-img">
+                <img src="img/model_start.png" width="100%" alt="Détails du lancement d'une analyse"
+                    class="clickable-img">
+                <img src="img/RB11-Q17.png" width="100%"
+                    alt="Résultat d'une analyse ne montrant pas de mutations génétiques incohérentes"
+                    class="clickable-img">
+                <img src="img/methylation.png" width="100%"
+                    alt="Graphique montrant les zones méthylées de certains gènes" class="clickable-img">
+                <img src="img/methylationAlamut.jpg" width="100%"
+                    alt="Visualisation plus brut de la méthylation sur une base (position génomique) précise"
+                    class="clickable-img">
+                <img src="img/automate.jpg" width="100%"
+                    alt="Autre automate, non vendue par Nanopore qui utilise une autre technologie"
+                    class="clickable-img">
+                <img src="img/GenomePilot.png" width="100%"
+                    alt="Visualisation de mon application développée pour traiter les données génomiques de Nanopore. Cette dernière est dédiée aux médecins et techniciens de laboratoire"
+                    class="clickable-img">
             </div>
+
+            <div id="imageModal" class="modal-stage">
+                <span class="close-stage">&times;</span>
+                <img class="modal-content-stage" id="modalImage">
+                <div id="caption"></div>
+            </div>
+
         </div>
         <div class="main-content">
             <div class="about">
                 <img src="img/etablissements_photo_1360.jpg" alt="CHU Amiens" width="100%">
-                <p id="intro"><code>Introduction</code> J'ai eu l'opportunité de réaliser un stage de 6 semaines au sein du CHU
+                <p id="intro"><code>Introduction</code> J'ai eu l'opportunité de réaliser un stage de 6 semaines au sein
+                    du CHU
                     d'Amiens, dans le service de
                     génétique. Ce stage s'est déroulé du 1er juillet au 9 août et a été centré sur la
                     bioinformatique, un domaine alliant informatique et biologie, essentiel pour le traitement et
@@ -67,7 +87,8 @@
                     résultats produits par ces analyses soient fiables et exploitables, tout en tenant compte des
                     spécificités techniques et biologiques liées à ce domaine.
                 </p>
-                <p id="params"><code>Paramétrage et Optimisation des Pipelines</code> Dès le début de mon stage, ma mission
+                <p id="params"><code>Paramétrage et Optimisation des Pipelines</code> Dès le début de mon stage, ma
+                    mission
                     principale a été de paramétrer une machine Linux pour permettre aux techniciens du laboratoire de
                     génétique de séquencer de l'ADN et de détecter des variants génétiques (mutations) potentiellement
                     pathogènes. Ces techniciens utilisaient une machine de séquençage Nanopore, mais rencontraient des
@@ -86,7 +107,8 @@
                     et la machine est devenue opérationnelle. Ce succès a marqué une étape cruciale dans mon stage et a
                     permis de poser les bases pour les missions suivantes.
                 </p>
-                <p id="methylation"><code>Exploration de la Méthylation ADN </code> Après avoir stabilisé les résultats du séquençage de
+                <p id="methylation"><code>Exploration de la Méthylation ADN </code> Après avoir stabilisé les résultats
+                    du séquençage de
                     l'ADN, une nouvelle mission m'a été confiée : explorer la méthylation de l'ADN. La méthylation est
                     un processus biologique complexe, souvent associé à la régulation de l'expression des gènes, et
                     représente un défi supplémentaire dans l'analyse génétique. Peu étudiée sur l'appareil de séquençage
@@ -100,7 +122,8 @@
                     méthylation. Ce succès a permis d'ajouter une nouvelle dimension aux capacités analytiques du
                     laboratoire, ouvrant ainsi la voie à des recherches plus approfondies dans ce domaine crucial de la
                     biologie.
-                <p id="app"><code>Développement d'une Application Web pour Automatiser les Pipelines </code> À mesure que mon
+                <p id="app"><code>Développement d'une Application Web pour Automatiser les Pipelines </code> À mesure
+                    que mon
                     stage avançait, il est devenu évident que sans la présence continue d'un bioinformaticien, les
                     techniciens du laboratoire risquaient de rencontrer des difficultés à maintenir et à exécuter les
                     pipelines bioinformatiques que j'avais créés. Pour garantir la pérennité de ces processus, j'ai
@@ -119,7 +142,8 @@
                     mon stage.
 
                 </p>
-                <p id="bilan"><code>Bilan et Réflexion sur l'Expérience </code> Mon stage au sein du service de génétique du CHU
+                <p id="bilan"><code>Bilan et Réflexion sur l'Expérience </code> Mon stage au sein du service de
+                    génétique du CHU
                     d'Amiens a été une expérience profondément enrichissante sur plusieurs plans. D'un point de vue
                     technique, il m'a permis d'approfondir mes compétences en bioinformatique et en développement de
                     pipelines sur des données de séquençage d'ADN. J'ai également appris à naviguer dans un
@@ -152,6 +176,7 @@
         </div>
     </div>
     <div class="iframe-container">
+
         <iframe src="https://aleksandre80.gitbook.io/untitled/application" width="100%" height="950px"></iframe>
     </div>
     <div class="cursor-light cursor-light-1"></div>
@@ -180,6 +205,37 @@
                 cursorLight.style.opacity = 0;
             });
         });
+    </script>
+    <script>
+        // Récupération des éléments pour le modal
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const captionText = document.getElementById("caption");
+        const closeModal = document.getElementsByClassName("close-stage")[0];
+
+        // Ajoute un événement de clic à toutes les images avec la classe "clickable-img"
+        const images = document.querySelectorAll('.clickable-img');
+        images.forEach(img => {
+            img.addEventListener('click', function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.style.width = "90%"; // Augmente la largeur à 90% de l'écran
+                modalImg.style.maxWidth = "1200px"; // Définit une largeur maximale pour ne pas dépasser
+                captionText.innerHTML = this.alt;
+            });
+        });
+
+        // Fermeture du modal lorsque l'utilisateur clique sur le "X"
+        closeModal.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Fermeture du modal en cliquant à l'extérieur de l'image
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
     <script src="social.js"></script>
 </body>
