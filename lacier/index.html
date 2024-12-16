@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurateur de Plaque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav-item active" data-panel="texte">Texte / Image / Cadre</div>
+        <div class="nav-item" data-panel="taille">Taille / Forme</div>
+        <div class="nav-item" data-panel="matiere">Matière</div>
+        <div class="nav-item" data-panel="coloris">Coloris</div>
+        <div class="nav-item" data-panel="fixation">Fixation</div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar-left" id="texte-panel" style="display:flex;">
+            <div class="panel-title-bar">
+                <h2>Liste des éléments présents</h2>
+            </div>
+            <div class="elements-list" id="elements-list"></div>
+
+            <div class="add-elements">
+                <div class="tabs-internal">
+                    <button class="internal-tab active" data-subpanel="text-subpanel">Texte</button>
+                    <button class="internal-tab" data-subpanel="image-subpanel">Image/Logo</button>
+                    <button class="internal-tab" data-subpanel="shape-subpanel">Forme</button>
+                    <button class="internal-tab" data-subpanel="frame-subpanel">Cadre</button>
+                    <button class="internal-tab" data-subpanel="qr-subpanel">QR Code</button>
+                </div>
+
+                <div class="sub-panel active" id="text-subpanel">
+                    <button id="add-text-btn">+ Ajouter texte</button>
+                </div>
+
+                <div class="sub-panel" id="image-subpanel">
+                    <input type="file" id="upload-image-input" accept="image/*" />
+                </div>
+
+                <div class="sub-panel" id="shape-subpanel">
+                    <div class="shapes-grid">
+                        <div data-shape="square">■</div>
+                        <div data-shape="circle">●</div>
+                        <div data-shape="star">★</div>
+                        <div data-shape="triangle">▲</div>
+                    </div>
+                </div>
+
+                <div class="sub-panel" id="frame-subpanel">
+                    <div class="frames-grid">
+                        <div data-frame="simple">□</div>
+                        <div data-frame="dashed">- - -</div>
+                        <div data-frame="dotted">···</div>
+                        <div data-frame="double">═╩═</div>
+                    </div>
+                </div>
+
+                <div class="sub-panel" id="qr-subpanel">
+                    <div class="qr-form">
+                        <input type="text" id="qr-url" placeholder="Lien du site" />
+                        <button id="generate-qr-btn">Générer QR Code</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Paramètres texte -->
+            <div class="settings-panel" id="text-settings" style="display:none;">
+                <label for="text-content">Contenu du texte :</label>
+                <input type="text" id="text-content" />
+                <label>Police :</label>
+                <select id="font-family">
+                    <option value="Arial">Arial</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                </select>
+                <label>Taille (px) :</label>
+                <input type="number" id="font-size" min="10" value="40" />
+                <label>Style :</label>
+                <div class="btn-group">
+                    <button id="bold-btn">Gras</button>
+                    <button id="italic-btn">Italique</button>
+                    <button id="underline-btn">Souligné</button>
+                </div>
+                <label>Alignement :</label>
+                <div class="btn-group">
+                    <button id="align-left" class="active">Gauche</button>
+                    <button id="align-center">Centré</button>
+                    <button id="align-right">Droite</button>
+                </div>
+                <label>Couleur :</label>
+                <input type="color" id="font-color" class="color-picker" value="#000000" />
+            </div>
+
+            <!-- Paramètres image, forme, cadre, QR code -->
+            <div class="settings-panel" id="image-settings" style="display:none;">
+                <label>Paramètres de l'élément :</label>
+                <p>Ici vous pouvez ajouter des réglages spécifiques (ex: changer l'image).</p>
+            </div>
+        </div>
+
+        <!-- Autres panneaux masqués -->
+        <div class="sidebar-left" id="taille-panel" style="display:none;">
+            <div class="panel-title-bar">
+                <h2>Taille / Forme</h2>
+            </div>
+        </div>
+        <div class="sidebar-left" id="matiere-panel" style="display:none;">
+            <div class="panel-title-bar">
+                <h2>Matière</h2>
+            </div>
+            <div class="matiere-options">
+                <div class="matiere-option" data-fixation="sans-fixation">
+                    <img data-v-2c120044="" src="https://static.otypo.com/images/signs/materials/plexitrans.webp" alt="Plexiglass" title="Plexiglass" width="" height="" class="" loading="lazy" draggable="false" fetchpriority="auto">
+                    <span>Plexiglass</span>
+                    <span class="price">Gratuit</span>
+                </div>
+            </div>
+            <div class="matiere-options">
+                <div class="matiere-option" data-fixation="sans-fixation">
+                    <img data-v-2c120044="" src="https://static.otypo.com/images/signs/materials/aluminium.webp" alt="Aluminium" title="Aluminium" width="" height="" class="" loading="lazy" draggable="false" fetchpriority="auto">
+                    <span>Aluminium</span>
+                    <span class="price">Gratuit</span>
+                </div>
+            </div>
+            <div class="matiere-options">
+                <div class="matiere-option" data-fixation="sans-fixation">
+                    <img data-v-2c120044="" src="https://static.otypo.com/images/signs/materials/laiton.webp" alt="Laiton" title="Laiton" width="" height="" class="" loading="lazy" draggable="false" fetchpriority="auto">
+                    <span>Laiton</span>
+                    <span class="price">Gratuit</span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-left" id="coloris-panel" style="display:none;">
+            <div class="panel-title-bar">
+                <h2>Coloris</h2>
+            </div>
+        </div>
+        <div class="sidebar-left" id="fixation-panel" style="display:none;">
+            <div class="panel-title-bar">
+                <h2>Fixation</h2>
+            </div>
+            <div class="fixation-options">
+                <div class="fixation-option" data-fixation="sans-fixation">
+                    <span>Sans fixation</span>
+                    <span class="price">Gratuit</span>
+                </div>
+                <div class="fixation-option" data-fixation="autocollant">
+                    <span>Autocollant</span>
+                    <span class="price">Gratuit</span>
+                </div>
+                <div class="fixation-option" data-fixation="trous">
+                    <span>Trous</span>
+                    <span class="price">Gratuit</span>
+                </div>
+                <div class="fixation-option" data-fixation="vis">
+                    <span>Vis</span>
+                    <span class="price">2.02€</span>
+                </div>
+                <div class="fixation-option" data-fixation="vis-cache">
+                    <span>Vis + Cache-vis</span>
+                    <span class="price">6.00€</span>
+                </div>
+                <div class="fixation-option" data-fixation="entretoises">
+                    <span>Entretoises</span>
+                    <span class="price">15.98€</span>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="canvas-area">
+            <div class="plaque-container" id="plaque-container">
+                <!-- <div class="hole top-left"></div>
+                <div class="hole top-right"></div>
+                <div class="hole bottom-left"></div>
+                <div class="hole bottom-right"></div> -->
+                <div class="guide-line horizontal" id="guide-horizontal"></div>
+                <div class="guide-line vertical" id="guide-vertical"></div>
+            </div>
+            <div class="bottom-bar">
+                <div class="product-info">
+                    <span class="product-price">75.52€</span>
+                </div>
+                <button class="add-to-cart-btn">Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

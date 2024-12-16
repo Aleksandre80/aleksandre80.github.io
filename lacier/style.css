@@ -1,0 +1,493 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0 20px;
+    height: 60px;
+}
+
+.header .nav-item {
+    margin-right: 30px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.header .nav-item.active {
+    color: #000;
+    font-weight: bold;
+}
+
+.main-container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.sidebar-left {
+    width: 300px;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-title-bar {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    background: #fff;
+}
+
+.panel-title-bar h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.elements-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    max-height: 400px;
+}
+
+.element-item {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.element-item.selected {
+    background: #e0f7fa;
+    border-color: #4dd0e1;
+}
+
+.element-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.element-actions i {
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+
+.add-elements {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-elements>div {
+    margin-bottom: 10px;
+}
+
+.tabs-internal {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tabs-internal button {
+    flex: 1;
+    padding: 8px;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tabs-internal button.active {
+    background: #ddd;
+    font-weight: bold;
+}
+
+.sub-panel {
+    display: none;
+}
+
+.sub-panel.active {
+    display: block;
+}
+
+.sub-panel input[type="file"] {
+    width: 100%;
+}
+
+.sub-panel .shapes-grid,
+.sub-panel .frames-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.sub-panel .shapes-grid div,
+.sub-panel .frames-grid div {
+    background: #ccc;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #999;
+    font-size: 20px;
+}
+
+.sub-panel .shapes-grid div:hover,
+.sub-panel .frames-grid div:hover,
+.sub-panel .shapes-grid div:focus,
+.sub-panel .frames-grid div:focus {
+    background: #bbb;
+}
+
+.sub-panel .qr-form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.sub-panel .qr-form button {
+    background: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.settings-panel {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+}
+
+.settings-panel label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.settings-panel input[type="text"],
+.settings-panel select,
+.settings-panel input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.settings-panel .btn-group {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.settings-panel button {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.settings-panel button.active {
+    background: #e0f7fa;
+    border-color: #4dd0e1;
+}
+
+.settings-panel .color-picker {
+    height: 30px;
+    padding: 0;
+}
+
+.canvas-area {
+    flex: 1;
+    position: relative;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.plaque-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: #efefef;
+    border: 2px solid #ddd;
+    background-position: center;
+    background-size: cover;
+}
+
+.hole {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.hole.top-left {
+    top: 10px;
+    left: 10px;
+}
+
+.hole.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.hole.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+.hole.bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+.draggable-element {
+    position: absolute;
+    line-height: 1;
+    cursor: move;
+    user-select: none;
+    transform-origin: center center;
+}
+
+.draggable-element img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.element-box {
+    position: absolute;
+    border: 2px dashed #2196f3;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.rotate-handle,
+.resize-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #2196f3;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.rotate-handle {
+    top: -30px;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.resize-handle {
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.add-to-cart-btn {
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+    background: #43a047;
+}
+
+.elements-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.elements-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.elements-list::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* Guides centrage (facultatif) */
+.guide-line {
+    position: absolute;
+    background: red;
+    display: none;
+    z-index: 999;
+}
+
+.guide-line.horizontal {
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+}
+
+.guide-line.vertical {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+}
+
+.fixation-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.fixation-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fixation-option:hover {
+    background-color: #f0f0f0;
+}
+
+.fixation-option .price {
+    font-weight: bold;
+    color: #333;
+}
+.fixation {
+    width: 35px; /* Taille des fixations */
+    height: 35px;
+    position: absolute;
+}
+
+.fixation.top-left {
+    top: 25px;
+    left: 25px;
+    transform: translate(-50%, -50%);
+}
+
+.fixation.top-right {
+    top: 25px;
+    right: 25px;
+    transform: translate(50%, -50%);
+}
+
+.fixation.bottom-left {
+    bottom: 25px;
+    left: 25px;
+    transform: translate(-50%, 50%);
+}
+
+.fixation.bottom-right {
+    bottom: 25px;
+    right: 25px;
+    transform: translate(50%, 50%);
+}
+
+.fixation-option.selected {
+    background: #e0f7fa;
+    border-color: #4dd0e1;
+}
+
+.matiere-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.matiere-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.matiere-option img {
+    border-radius: 50%;
+}
+
+.matiere-option:hover {
+    background-color: #f0f0f0;
+}
+
+.matiere-option .price {
+    font-weight: bold;
+    color: #333;
+}
+
+.matiere-option.selected {
+    background: #e0f7fa;
+    border-color: #4dd0e1;
+}
+
