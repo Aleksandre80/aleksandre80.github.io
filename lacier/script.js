@@ -68,6 +68,11 @@ function createTextElement(content="Nouveau texte") {
     div.style.transform = 'translate(-50%, -50%)';
     plaqueContainer.appendChild(div);
 
+    div.addEventListener('mousedown', (e) => {
+        e.stopPropagation(); // Empêche le clic de remonter et de désélectionner
+        selectElement(id);
+    });
+
     elements.push({
         id,
         type:'text',
@@ -102,6 +107,7 @@ document.getElementById('upload-image-input').addEventListener('change', functio
     }
     reader.readAsDataURL(file);
 });
+
 function createImageElement(src) {
     const id = Date.now();
     const div = document.createElement('div');
@@ -114,6 +120,11 @@ function createImageElement(src) {
     div.style.transform='translate(-50%,-50%)';
     plaqueContainer.appendChild(div);
 
+    div.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        selectElement(id);
+    });
+
     elements.push({
         id,
         type:'image',
@@ -125,6 +136,7 @@ function createImageElement(src) {
     updateElementsList();
     selectElement(id);
 }
+
 
 // Ajouter une forme (traitons-les comme des images simples, on met un fond noir par exemple)
 document.querySelectorAll('.shapes-grid div').forEach(shapeDiv => {
@@ -169,6 +181,12 @@ function createShapeElement(shape) {
     div.style.transform='translate(-50%,-50%)';
     plaqueContainer.appendChild(div);
 
+    // Ajout de l'écouteur pour sélectionner l'élément
+    div.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        selectElement(id);
+    });
+
     elements.push({
         id,
         type:'shape',
@@ -182,12 +200,12 @@ function createShapeElement(shape) {
 }
 
 // Ajouter un cadre (pareil que forme, mais type:'frame')
-document.querySelectorAll('.frames-grid div').forEach(frameDiv => {
-    frameDiv.addEventListener('click', () => {
-        const frameType = frameDiv.getAttribute('data-frame');
-        createFrameElement(frameType);
-    });
-});
+// document.querySelectorAll('.frames-grid div').forEach(frameDiv => {
+//     frameDiv.addEventListener('click', () => {
+//         const frameType = frameDiv.getAttribute('data-frame');
+//         createFrameElement(frameType);
+//     });
+// });
 function createFrameElement(frameType) {
     const id = Date.now();
     const div=document.createElement('div');
@@ -204,6 +222,12 @@ function createFrameElement(frameType) {
     div.style.transform='translate(-50%,-50%)';
     plaqueContainer.appendChild(div);
 
+    // Ajout de l'écouteur pour sélectionner l'élément
+    div.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        selectElement(id);
+    });
+
     elements.push({
         id,
         type:'frame',
@@ -217,13 +241,13 @@ function createFrameElement(frameType) {
 }
 
 // QR code
-document.getElementById('generate-qr-btn').addEventListener('click', () => {
-    const url = document.getElementById('qr-url').value.trim();
-    if (!url) return;
-    // Générer un QR code. On peut utiliser l'API chart de google : https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=URL
-    const qrSrc = 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=' + encodeURIComponent(url);
-    createImageElement(qrSrc);
-});
+// document.getElementById('generate-qr-btn').addEventListener('click', () => {
+//     const url = document.getElementById('qr-url').value.trim();
+//     if (!url) return;
+//     const qrSrc = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=' + encodeURIComponent(url);
+//     createImageElement(qrSrc);
+    
+// });
 
 function updateElementsList() {
     elementsList.innerHTML='';
@@ -271,32 +295,49 @@ function deleteElement(id) {
 let selectionBox=null,rotateHandle=null,resizeHandle=null;
 
 function showSelectionBox() {
-    const el=getSelectedElement();
+    const el = getSelectedElement();
     if (!el) { hideSelectionBox(); return; }
+
     if (selectionBox && selectionBox.parentNode) {
         plaqueContainer.removeChild(selectionBox);
-        selectionBox=null;
+        selectionBox = null;
     }
-    selectionBox=document.createElement('div');
-    selectionBox.className='element-box';
+
+    selectionBox = document.createElement('div');
+    selectionBox.className = 'element-box';
     plaqueContainer.appendChild(selectionBox);
 
-    rotateHandle=document.createElement('div');
-    rotateHandle.className='rotate-handle';
-    rotateHandle.innerHTML='⟳';
+    rotateHandle = document.createElement('div');
+    rotateHandle.className = 'rotate-handle';
+    rotateHandle.innerHTML = '⟳';
     selectionBox.appendChild(rotateHandle);
 
-    resizeHandle=document.createElement('div');
-    resizeHandle.className='resize-handle';
-    resizeHandle.innerHTML='⇲';
-    selectionBox.appendChild(resizeHandle);
+    // Création des 4 poignées de redimensionnement aux coins
+    const resizeHandles = [
+        { class: 'resize-handle-tl', cursor: 'nwse-resize' },
+        { class: 'resize-handle-tr', cursor: 'nesw-resize' },
+        { class: 'resize-handle-bl', cursor: 'nesw-resize' },
+        { class: 'resize-handle-br', cursor: 'nwse-resize' }
+    ];
+
+    resizeHandles.forEach(h => {
+        const handle = document.createElement('div');
+        handle.className = h.class;
+        handle.style.cursor = h.cursor;
+        selectionBox.appendChild(handle);
+        initResizeHandle(handle, el.elementNode, h.class);
+    });
 
     positionSelectionBox(el.elementNode);
 
     initDragAndDrop(el.elementNode);
-    initRotate(rotateHandle,el.elementNode);
-    initResize(resizeHandle,el.elementNode);
+    initRotate(rotateHandle, el.elementNode);
+
+    // Supprimer l'appel à initResize(resizeHandle, el.elementNode); 
+    // puisque l'on n'a plus de resizeHandle unique.
 }
+
+  
 
 function positionSelectionBox(elem) {
     const rect=elem.getBoundingClientRect();
@@ -334,36 +375,88 @@ function initDragAndDrop(elementNode) {
 
     function doDrag(e) {
         if (!isDragging) return;
-        const el=getSelectedElement();
+        const el = getSelectedElement();
+        if (!el) return;
         const containerRect=plaqueContainer.getBoundingClientRect();
+    
         let newLeft=e.clientX-containerRect.left-dragOffsetX;
         let newTop=e.clientY-containerRect.top-dragOffsetY;
-
+    
         const pw=plaqueContainer.offsetWidth;
         const ph=plaqueContainer.offsetHeight;
         const snapThreshold=10;
-        const centerX=pw/2; const centerY=ph/2;
-        let showVLine=false; let showHLine=false;
-        const elemCenterX=newLeft+(elementNode.offsetWidth/2);
+    
+        // Calcul du centre de l'élément en cours de déplacement
+        const elemCenterX = newLeft+(elementNode.offsetWidth/2);
+        const elemCenterY = newTop+(elementNode.offsetHeight/2);
+    
+        // Variables pour savoir si on affiche les guides
+        let showVLine=false; 
+        let showHLine=false;
+        let snapX = null; 
+        let snapY = null;
+    
+        // Vérifier le centrage par rapport au plateau (déjà existant)
+        const centerX=pw/2; 
+        const centerY=ph/2;
         if (Math.abs(elemCenterX-centerX)<snapThreshold) {
-            newLeft=centerX-(elementNode.offsetWidth/2);
+            snapX = centerX-(elementNode.offsetWidth/2);
             showVLine=true;
         }
-        const elemCenterY=newTop+(elementNode.offsetHeight/2);
         if (Math.abs(elemCenterY-centerY)<snapThreshold) {
-            newTop=centerY-(elementNode.offsetHeight/2);
+            snapY = centerY-(elementNode.offsetHeight/2);
             showHLine=true;
         }
-
+    
+        // --- NOUVEAU : Vérifier les ancres par rapport aux autres éléments ---
+        // On parcourt tous les autres éléments pour trouver leurs centres
+        for (const otherEl of elements) {
+            if (otherEl.id === el.id) continue; // ignore l'élément en cours
+            const otherNode = otherEl.elementNode;
+            const otherRect = otherNode.getBoundingClientRect();
+    
+            // Calcul du centre de l'autre élément
+            const otherCenterX = (otherRect.left + otherRect.width/2) - containerRect.left;
+            const otherCenterY = (otherRect.top + otherRect.height/2) - containerRect.top;
+    
+            // Vérification alignement vertical (centres horizontaux alignés)
+            if (Math.abs(elemCenterX - otherCenterX) < snapThreshold) {
+                snapX = otherCenterX - (elementNode.offsetWidth/2);
+                showVLine = true;
+            }
+    
+            // Vérification alignement horizontal (centres verticaux alignés)
+            if (Math.abs(elemCenterY - otherCenterY) < snapThreshold) {
+                snapY = otherCenterY - (elementNode.offsetHeight/2);
+                showHLine = true;
+            }
+        }
+    
+        // Appliquer le snapping si nécessaire
+        if (snapX !== null) newLeft = snapX;
+        if (snapY !== null) newTop = snapY;
+    
         elementNode.style.left=newLeft+'px';
         elementNode.style.top=newTop+'px';
         el.x=((newLeft+(elementNode.offsetWidth/2))/pw)*100;
         el.y=((newTop+(elementNode.offsetHeight/2))/ph)*100;
         elementNode.style.transform=`translate(0,0) rotate(${el.rotation}deg) scale(${el.scale})`;
         positionSelectionBox(elementNode);
-
-        guideVertical.style.display=showVLine?'block':'none';
-        guideHorizontal.style.display=showHLine?'block':'none';
+    
+        // Mettre à jour l'affichage des guides
+        if (showVLine) {
+            guideVertical.style.left=( (snapX!==null?snapX+(elementNode.offsetWidth/2):centerX) )+'px';
+            guideVertical.style.display='block';
+        } else {
+            guideVertical.style.display='none';
+        }
+    
+        if (showHLine) {
+            guideHorizontal.style.top=( (snapY!==null?snapY+(elementNode.offsetHeight/2):centerY) )+'px';
+            guideHorizontal.style.display='block';
+        } else {
+            guideHorizontal.style.display='none';
+        }
     }
 
     function stopDrag() {
@@ -408,39 +501,70 @@ function initRotate(handle,elementNode) {
     }
 }
 
-function initResize(handle,elementNode) {
-    handle.onmousedown=startResize;
-    function startResize(e){
-        e.stopPropagation();
-        isResizing=true;
-        const el=getSelectedElement();
-        if(!el)return;
-        startScale=el.scale;
-        const rect=elementNode.getBoundingClientRect();
-        const centerX=rect.left+rect.width/2;
-        const centerY=rect.top+rect.height/2;
-        startDist=Math.sqrt((e.clientX-centerX)**2+(e.clientY-centerY)**2);
-        document.addEventListener('mousemove',doResize);
-        document.addEventListener('mouseup',stopResize);
+function initResizeHandle(handle, elementNode, handleClass) {
+    let isResizing = false;
+    let startX = 0;
+    let startY = 0;
+    let startWidth = 0;
+    let startHeight = 0;
+    let startScaleX = 1;
+    let startScaleY = 1;
+  
+    handle.addEventListener('mousedown', startResize);
+  
+    function startResize(e) {
+      e.stopPropagation();
+      const el = getSelectedElement();
+      if (!el) return;
+  
+      const rect = elementNode.getBoundingClientRect();
+      startX = e.clientX;
+      startY = e.clientY;
+      startWidth = rect.width;
+      startHeight = rect.height;
+      startScaleX = el.scale; 
+      startScaleY = el.scale; // on part sur un scale uniforme (même pour X et Y)
+      isResizing = true;
+  
+      document.addEventListener('mousemove', doResize);
+      document.addEventListener('mouseup', stopResize);
     }
-    function doResize(e){
-        if(!isResizing)return;
-        const el=getSelectedElement();
-        const rect=elementNode.getBoundingClientRect();
-        const centerX=rect.left+rect.width/2;
-        const centerY=rect.top+rect.height/2;
-        const dist2=Math.sqrt((e.clientX-centerX)**2+(e.clientY-centerY)**2);
-        const newScale=startScale*(dist2/startDist);
-        el.scale=newScale;
-        elementNode.style.transform=`translate(0,0) rotate(${el.rotation}deg) scale(${newScale})`;
+  
+    function doResize(e) {
+        if (!isResizing) return;
+        const el = getSelectedElement();
+        if (!el) return;
+      
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+      
+        // Calculer un scale factor basé sur les dimensions d'origine
+        // si deltaX est négatif et important, (startWidth + deltaX) < startWidth, le ratio sera < 1
+        const scaleX = (startWidth + deltaX) / startWidth;
+        const scaleY = (startHeight + deltaY) / startHeight;
+      
+        // Pour un redimensionnement uniforme, on peut prendre la moyenne ou le max/min.
+        // Ici, on choisit de prendre la valeur la plus adaptée pour conserver une forme à peu près cohérente.
+        // Prenons le ratio qui s'éloigne le plus de 1 pour un effet "uniforme".
+        const scaleFactor = Math.abs(scaleX) > Math.abs(scaleY) ? scaleX : scaleY;
+      
+        // Empêcher le scale de devenir trop petit ou négatif
+        const minScale = 0.1;
+        const newScale = Math.max(scaleFactor * startScaleX, minScale);
+      
+        el.scale = newScale;
+        elementNode.style.transform = `translate(0,0) rotate(${el.rotation}deg) scale(${el.scale})`;
         positionSelectionBox(elementNode);
+      }
+      
+  
+    function stopResize() {
+      isResizing = false;
+      document.removeEventListener('mousemove', doResize);
+      document.removeEventListener('mouseup', stopResize);
     }
-    function stopResize(){
-        isResizing=false;
-        document.removeEventListener('mousemove',doResize);
-        document.removeEventListener('mouseup',stopResize);
-    }
-}
+  }
+  
 
 function updateUIForSelectedElement() {
     const el=getSelectedElement();

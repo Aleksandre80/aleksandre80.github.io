@@ -109,6 +109,71 @@
             <div class="panel-title-bar">
                 <h2>Taille / Forme</h2>
             </div>
+            <div class="dimensions-section">
+                <div class="dimension-input">
+                    <label for="plaque-width">Largeur en mm</label>
+                    <input type="number" id="plaque-width" min="1" value="200">
+                </div>
+                <div class="link-ratio">
+                    <button id="toggle-ratio" title="Conserver le ratio">
+                        🔗
+                    </button>
+                </div>
+                <div class="dimension-input">
+                    <label for="plaque-height">Hauteur en mm</label>
+                    <input type="number" id="plaque-height" min="1" value="150">
+                </div>
+            </div>
+            
+            <div class="thickness-surface-section">
+                <div class="info-line">
+                    <span>Épaisseur :</span> <strong>3 mm</strong>
+                </div>
+                <div class="info-line">
+                    <span>Surface :</span> <strong>30000 mm²</strong>
+                </div>
+                <div class="unit-toggle">
+                    <label for="unit-mm">mm</label>
+                    <input type="checkbox" id="unit-mm" checked>
+                    <!-- Si vous souhaitez gérer un toggle pour changer d'unité -->
+                </div>
+            </div>
+            
+            <div class="options-section">
+                <div class="option-line">
+                    <label for="coins-arrondis">Coins arrondis</label>
+                    <div class="toggle-wrapper">
+                        <span class="price">2.00€</span>
+                        <label class="switch">
+                            <input type="checkbox" id="coins-arrondis">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="option-line coins-radius-wrapper" style="display:none;">
+                        <label for="coins-radius-slider">Rayon des coins (%)</label>
+                        <input type="range" id="coins-radius-slider" min="0" max="50" value="0">
+                    </div>
+                    
+                </div>
+            
+                <div class="option-line">
+                    <label for="forme-plaque">Forme de la plaque</label>
+                    <select id="forme-plaque">
+                        <option value="rectangle">Rectangle</option>
+                        <option value="ovale">Ovale</option>
+                        <option value="cercle">Cercle</option>
+                        <option value="panneau">Panneau spécial</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="suggestions-section">
+                <a href="#" class="suggestions-link">voir nos suggestions de dimensions</a>
+            </div>
+            
+            <div class="validate-section">
+                <button id="validate-size-btn">Valider</button>
+            </div>
         </div>
         <div class="sidebar-left" id="matiere-panel" style="display:none;">
             <div class="panel-title-bar">
@@ -182,6 +247,10 @@
                 <div class="hole bottom-right"></div> -->
                 <div class="guide-line horizontal" id="guide-horizontal"></div>
                 <div class="guide-line vertical" id="guide-vertical"></div>
+                <div id="plaque-frame"></div>
+                <div class="guide-line horizontal" id="guide-horizontal"></div>
+                <div class="guide-line vertical" id="guide-vertical"></div>
+
             </div>
             <div class="bottom-bar">
                 <div class="product-info">
@@ -192,6 +261,11 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="taille.js"></script>
+    <script src="cadres.js"></script>
+    <script src="qrcode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1/qrcode.min.js"></script>
+
 </body>
 
 </html>
